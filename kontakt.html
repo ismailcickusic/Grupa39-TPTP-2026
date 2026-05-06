@@ -1,29 +1,90 @@
 <!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - Fade Zone</title>
+    <link rel="stylesheet" href="css/tptpstil.css">
+    <script src="../js/tptpskripte.js" defer></script>
+</head>
+<body>
 
-<html lang='bs'>
-    <head>
-        <meta charset='UTF-8'>
-        <link rel="stylesheet" href="css/tptpstil.css">
-        <title>Fade Zone</title>
-    </head>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="images/logo5.png" alt="Fade Zone"></a>
+        </div>
+        
+        <input type="checkbox" id="tema">
+        <label for="tema"></label>
+        
+        <ul class="lista">
+            <li><a href="index.html">Početna</a></li>
+            <li><a href="sadrzaj.html">Usluge</a></li>
+            <li><a href="kontakt.html" class="aktivna">Kontakt</a></li>
+        </ul>
+    </header>
 
+    <main>
+        <section class="kontakt-sekcija">
+            <h1>Kontaktirajte nas</h1>
+            <p>Imate pitanja ili želite zakazati termin? Rado ćemo vam pomoći.</p>
 
-    <body>
-        <header>
-            <div class="logo"><a href="index.html"><img src="images/logo5.png" alt="Fade Zone"></a></div>
-            
-                <input type="checkbox" id="tema">
-                <label for="tema"></label>
-            <ul class="lista">
-                <li><a href="index.html">Početna</a></li>
-                <li><a href="sadrzaj.html">Usluge</a></li>
-                <li><a href="kontakt.html">Kontakt</a></li>
-            </ul>
-        </header>
+            <form id="kontaktForma" novalidate>
+                <div class="forma-grupa">
+                    <label  class="contact-field" for="ime">Ime:</label>
+                    <input type="text" id="ime" name="ime">
+                    <span class="greska-poruka" id="imeGreska"></span>
+                </div>
 
+                <div class="forma-grupa">
+                    <label  class="contact-field"for="prezime">Prezime:</label>
+                    <input type="text" id="prezime" name="prezime">
+                    <span class="greska-poruka" id="prezimeGreska"></span>
+                </div>
 
+                <div class="forma-grupa">
+                    <label class="contact-field" for="email">Email adresa:</label>
+                    <input type="text" id="email" name="email">
+                    <span class="greska-poruka" id="emailGreska"></span>
+                </div>
 
-        <script src="js/tptpskripte.js"></script>
-    </body>
+                <div class="forma-grupa">
+                    <label class="contact-field" for="telefon">Telefon:</label>
+                    <input type="text" id="telefon" name="telefon">
+                    <span class="greska-poruka" id="telefonGreska"></span>
+                </div>
 
+                <div class="forma-grupa">
+                    <label class="contact-field" for="pitanje">Tema upita:</label>
+                    <select id="pitanje" name="pitanje">
+                        <option value="">Odaberite temu</option>
+                        <option value="upit">Opći upit</option>
+                        <option value="rezervacija">Rezervacija termina</option>
+                        <option value="pritužbe">Pohvale i pritužbe</option>
+                    </select>
+                    <span class="greska-poruka" id="pitanjeGreska"></span>
+                </div>
+
+                <div class="forma-grupa">
+                    <label class="contact-field" for="poruka">Poruka:</label>
+                    <textarea id="poruka" name="poruka" rows="5"></textarea>
+                    <span class="greska-poruka" id="porukaGreska"></span>
+                </div>
+
+                <div class="forma-dugmad">
+                    <button type="submit">Pošalji</button>
+                    <button type="reset" id="resetDugme">Resetuj</button>
+                </div>
+            </form>
+
+            <div id="uspjesnaPoruka" class="uspjeh-kontejner" style="display: none;"></div>
+        </section>
+    </main>
+
+    <footer class="kontakti-footer">
+        <p>Autori: Kovčević Jasmina, Muratović Irhad,Čićkušić Ismali | &copy; 2026</p>
+    </footer>
+
+    
+</body>
 </html>
