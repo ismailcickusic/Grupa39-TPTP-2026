@@ -16,7 +16,6 @@ body{
 }
 
 header {
-    position: absolute;
     display:flex;
     align-items: center;
     justify-content: space-between;
@@ -27,32 +26,32 @@ header {
 }
 
 .logo{
-    
-    margin-left: 5%;
+    margin: 0;
     padding: 0;
 }
 
 .logo img{
-    width: 25%;
+    width: 200px;
     height: auto;
     cursor: pointer;
+    margin: 0;
 }
 .lista{
-    margin-right: 5%;
-    position: relative;
     display:flex;
     align-items: center;
     justify-content: space-between;
     list-style: none;
     padding: 0;
+    overflow-x: 0;
+    margin-right: 2%;
+    gap: 10px;
     
 }
 .lista li {
     margin:0;
-    padding: 3%;
+    padding: 10px 20px;
 }
 .lista a{
-    padding: 25px;
     text-decoration: none;
     font-weight: bold;
     color: white;
@@ -64,7 +63,6 @@ header {
 }
 
  #PrekidacLabel{
-    margin-right: 25px;
     width: 45px;
     height: 20px;
     position: relative;
@@ -120,7 +118,7 @@ header {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 260px));
   gap: 25px;
-  margin-top:200px;
+  margin-top:100px;
 }
 
 .kartica {
@@ -202,7 +200,7 @@ header {
 .broj-stranice {
   padding: 6px 10px;
   background: #1f2630;
-  color:white;
+  color: white;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -211,6 +209,67 @@ header {
   background: #e0b15f;
   color: black;
 }
+
+.galerija{
+  align-items: center;
+  margin-top: 5%;
+  padding: 40px;
+  background: transparent;
+  margin-bottom: 100px;
+  
+}
+.galerija h1{
+  padding: 30px;
+  color: white;
+  text-align: center;
+}
+
+.galerija h2 {
+  margin-bottom: 20px;
+}
+
+.galerija-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.galerija-lista li {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 12px;
+  padding: 15px;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+}
+.galerija-lista img:hover{
+  transform: scale(1.05);
+}
+.galerija-lista img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.galerija-lista ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.galerija-lista ul li {
+  background: none;
+  padding: 3px 0;
+  border: none;
+  backdrop-filter: none;
+}
+
+
 
 .hero {
     height: 100vh;
