@@ -114,10 +114,17 @@ nav {
   margin: auto;
 }
 
+.usluge h1{
+  padding: 30px;
+  color: white;
+  text-align: center;
+}
+
 .opcije {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 260px));
   gap: 25px;
+  margin-top: 50px;
 }
 
 .kartica {
