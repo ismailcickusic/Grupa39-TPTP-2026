@@ -118,7 +118,6 @@ nav {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 260px));
   gap: 25px;
-  margin-top:100px;
 }
 
 .kartica {
@@ -210,6 +209,25 @@ nav {
   color: black;
 }
 
+#filteri {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 5%;
+}
+
+#filteri button {
+  background: #e0b15f;
+  color: black;
+  border-radius: 100%;
+  font-weight: bold;
+  padding: 10px;
+}
+#filteri button:hover{
+  transform: scale(1.05);
+}
+
 .galerija{
   align-items: center;
   margin-top: 5%;
@@ -267,6 +285,44 @@ nav {
   padding: 3px 0;
   border: none;
   backdrop-filter: none;
+}
+.radno-vrijeme{
+  align-items:center;
+  text-align:center;
+  margin-top: 10%;
+  margin-bottom: 150px;
+}
+
+.radno-vrijeme h1{
+ color: white;
+ text-align: center;
+ padding: 30px;
+}
+.radno-vrijeme table{
+  align-items: center;
+  color:white;
+  background-color: black;
+  margin: 0 auto;
+border-collapse: collapse;
+
+}
+.radno-vrijeme table tr td{
+  padding: 15px;
+  border: 1px solid #3a3a3a;
+  
+}
+
+#vrati {
+  z-index: 999;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none; 
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 100%;
+  background-color: rgba(238, 238, 108, 0.8);
+  cursor: pointer;
 }
 
 
