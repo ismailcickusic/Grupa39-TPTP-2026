@@ -94,7 +94,9 @@ let aktivniFilter = "sve";
 
 function prikaziUsluge() {
   const container = document.getElementById("lista-opcija");
+ if(container){
   container.innerHTML = "";
+  }
   let filtrirane = services;
 
   if (aktivniFilter !== "sve") {
@@ -105,6 +107,7 @@ function prikaziUsluge() {
   const numerisanePonude = filtrirane.slice(pocetak, pocetak + brPonuda);
 
   numerisanePonude.forEach(service => {
+    if(container){
     container.innerHTML += `
       <div class="kartica">
         <img src="${service.img}" alt="${service.alt}">
@@ -120,13 +123,15 @@ function prikaziUsluge() {
           </div>
         </div>
       </div>
-    `;
+    `;}
   });
 }
 
 function numeracija() {
   const brojStranice = document.getElementById("brojStranice");
+  if(brojStranice){
   brojStranice.innerHTML = "";
+    }
 
   let filtrirane = services;
   if (aktivniFilter !== "sve") {
@@ -146,10 +151,14 @@ function numeracija() {
       numeracija();
     });
 
+    if(brojStranice){
     brojStranice.appendChild(paginacijaBtn);
   }
+  }
 }
+const nazadBtn = document.getElementById("nazadBtn");
 
+if(nazadBtn){
 document.getElementById("nazadBtn").addEventListener("click", () => {
   if (brojStr > 1) {
     brojStr--;
@@ -157,7 +166,9 @@ document.getElementById("nazadBtn").addEventListener("click", () => {
     numeracija();
   }
 });
-
+}
+const naprijedBtn = document.getElementById("naprijedBtn");
+if(naprijedBtn){
 document.getElementById("naprijedBtn").addEventListener("click", () => {
   if(aktivniFilter!="sve"){
   if (brojStr < Math.ceil(filtrirane.length / brPonuda)) {
@@ -175,6 +186,7 @@ document.getElementById("naprijedBtn").addEventListener("click", () => {
   }
 }
 });
+}
 
 prikaziUsluge();
 numeracija();
@@ -199,6 +211,7 @@ document.querySelectorAll("#filteri button").forEach(filterBtn => {
     }
   };
 
+if(vrati){
 
   vrati.onclick = function () {
     window.scrollTo({
@@ -206,6 +219,7 @@ document.querySelectorAll("#filteri button").forEach(filterBtn => {
       behavior: "smooth"
     });
   };
+}
 
   
 document.addEventListener("DOMContentLoaded", () => {
