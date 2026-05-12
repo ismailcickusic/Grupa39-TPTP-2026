@@ -5,9 +5,7 @@ const services = [
     cijena: "15.00KM",
     duration: "20 - 30min",
     alt: "Muško šišanje",
-    filterOpcija: "musko",
     img: "images/muska.png"
-    
   },
   {
     title: "ŽENSKO ŠIŠANJE",
@@ -15,7 +13,6 @@ const services = [
     cijena: "20.00KM",
     duration: "30-45 min",
     alt: "Žensko šišanje",
-    filterOpcija: "zensko",
     img: "images/zensko.jpg"
   },
   {
@@ -24,7 +21,6 @@ const services = [
     cijena: "10.00KM",
     duration: "15-35 min",
     alt: "Feniranje kose",
-    filterOpcija: "sve",
     img: "images/feniranje.jpg"
   },
   {
@@ -33,77 +29,58 @@ const services = [
     cijena: "30.00KM",
     duration: "60-90 min",
     alt: "Farbanje kose",
-    filterOpcija: "sve",
     img: "images/farbanje.jpg"
   },
-
   {
     title: "PRAMENOVI",
     desc: "Dodavanje svjetlijih ili tamnijih nijansi kosi za prirodan ili kontrastan izgled.",
     cijena: "25.00KM",
     duration: "45-90 min",
     alt: "Pramenovi",
-    filterOpcija: "zensko",
     img: "images/pramenovi.jpg"
   },
-
-    {
+  {
     title: "SVEČANE FRIZURE",
     desc: "Izrada elegantnih frizura za vjenčanja, mature i posebne prilike",
     cijena: "40.00KM",
     duration: "45-75 min",
     alt: "Svečane frizure",
-    filterOpcija: "zensko",
     img: "images/svecane.jpg"
   },
-     {
+  {
     title: "TRETMAN ZA NJEGU KOSE",
     desc: "Dubinska njega kose uz maske i preparate za hidrataciju i obnovu",
     cijena: "25.00KM",
     duration: "20-30 min",
     alt: "Tretman za njegu kose",
-    filterOpcija: "sve",
     img: "images/tretman.jpg"
   },
-     {
+  {
     title: "MUŠKO BRIJANJE I UREĐIVANJE BRADE",
     desc: "Precizno oblikovanje i brijanje brade uz korištenje profesionalnih alata.",
     cijena: "10.00KM",
     duration: "15-20 min",
     alt: "Muško brijanje i uređivanje brade",
-    filterOpcija: "musko",
     img: "images/brada.jpg"
   },
-     {
+  {
     title: "MINIVAL",
     desc: "Tretman kojim se kosa trajno uvija i dobija volumen i valovit izgled.",
     cijena: "40.00KM",
     duration: "90-120 min",
     alt: "Minival",
-    filterOpcija: "zensko",
     img: "images/minival.jpg"
   }
-
-
 ];
 
-//ChatGPT je pomogao pri pravljenju sistema za paginaciju i filtriranje
 const brPonuda = 4;
 let brojStr = 1;
-let aktivniFilter = "sve";
 
 function prikaziUsluge() {
   const container = document.getElementById("lista-opcija");
   container.innerHTML = "";
-  let filtrirane = services;
-
-  if (aktivniFilter !== "sve") {
-    filtrirane = services.filter(s => s.filterOpcija === aktivniFilter);
-  }
-
   const pocetak = (brojStr - 1) * brPonuda;
-  const numerisanePonude = filtrirane.slice(pocetak, pocetak + brPonuda);
-
+  const numerisanePonude = services.slice(pocetak, pocetak + brPonuda);
   numerisanePonude.forEach(service => {
     container.innerHTML += `
       <div class="kartica">
@@ -127,107 +104,132 @@ function prikaziUsluge() {
 function numeracija() {
   const brojStranice = document.getElementById("brojStranice");
   brojStranice.innerHTML = "";
-  
-  let filtrirane = services;
-  if (aktivniFilter !== "sve") {
-    filtrirane = services.filter(s => s.filterOpcija === aktivniFilter);
-  }
-  const brojacStranica = Math.ceil(filtrirane.length / brPonuda);
-
+  const brojacStranica = Math.ceil(services.length / brPonuda);
   for (let i = 1; i <= brojacStranica; i++) {
     const paginacijaBtn = document.createElement("span");
     paginacijaBtn.innerText = i;
     paginacijaBtn.classList.add("broj-stranice");
     if (i === brojStr) paginacijaBtn.classList.add("active");
-
     paginacijaBtn.addEventListener("click", () => {
       brojStr = i;
       prikaziUsluge();
       numeracija();
     });
-
     brojStranice.appendChild(paginacijaBtn);
   }
 }
 
-document.getElementById("nazadBtn").addEventListener("click", () => {
-  if (brojStr > 1) {
-    brojStr--;
-    prikaziUsluge();
-    numeracija();
-  }
-});
 
-document.getElementById("naprijedBtn").addEventListener("click", () => {
-  if(aktivniFilter!="sve"){
-  if (brojStr < Math.ceil(filtrirane.length / brPonuda)) {
-    brojStr++;
-    prikaziUsluge();
-    numeracija();
-  }
-}
+const nazadBtn = document.getElementById("nazadBtn");
+const naprijedBtn = document.getElementById("naprijedBtn");
 
-  if(aktivniFilter==="sve"){
-  if (brojStr < Math.ceil(services.length / brPonuda)) {
-    brojStr++;
-    prikaziUsluge();
-    numeracija();
-  }
-}
-});
-
-prikaziUsluge();
-numeracija();
-
-document.querySelectorAll("#filteri button").forEach(filterBtn => {
-  filterBtn.addEventListener("click", () => {
-    aktivniFilter = filterBtn.dataset.filter;
-    brojStr = 1;
-    prikaziUsluge();
-    numeracija();
-  });
+if (nazadBtn && naprijedBtn) {
+  nazadBtn.addEventListener("click", () => {
+    if (brojStr > 1) {
+      brojStr--;
+      prikaziUsluge();
+      numeracija();
+    }
   });
 
- const vrati = document.getElementById("vrati");
-
-  
-  window.onscroll = function () {
-    if (document.documentElement.scrollTop > 200) {
-      vrati.style.display = "block";
-    } else {
-      vrati.style.display = "none";
+  naprijedBtn.addEventListener("click", () => {
+    if (brojStr < Math.ceil(services.length / brPonuda)) {
+      brojStr++;
+      prikaziUsluge();
+      numeracija();
     }
-  };
+  });
 
-  
-  vrati.onclick = function () {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
+  prikaziUsluge();
+  numeracija();
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const forma = document.getElementById('kontaktForma');
+    const resetDugme = document.getElementById('resetDugme');
+    const uspjesnaPoruka = document.getElementById('uspjesnaPoruka');
+
+    if (!forma) return; 
+
+    const emailRegex = /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const telefonRegex = /^[0-9 -]+$/;
+
+    forma.addEventListener('submit', function(event) {
+        event.preventDefault();
+        let validno = true;
+
+        const ime = document.getElementById('ime').value.trim();
+        const prezime = document.getElementById('prezime').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const telefon = document.getElementById('telefon').value.trim();
+        const tema = document.getElementById('pitanje').value;
+        const poruka = document.getElementById('poruka').value.trim();
+
+        resetirajGreske();
+
+        if (ime === '') {
+            prikaziGresku('ime', 'Ime je obavezno polje.');
+            validno = false;
+        }
+
+        if (prezime === '') {
+            prikaziGresku('prezime', 'Prezime je obavezno polje.');
+            validno = false;
+        }
+
+        if (email === '') {
+            prikaziGresku('email', 'Email je obavezno polje.');
+            validno = false;
+        } else if (!emailRegex.test(email)) {
+            prikaziGresku('email', 'Molimo unesite ispravan format email adrese.');
+            validno = false;
+        }
+
+        if (telefon === '') {
+            prikaziGresku('telefon', 'Telefon je obavezno polje.');
+            validno = false;
+        } else if (!telefonRegex.test(telefon)) {
+            prikaziGresku('telefon', 'Telefon smije sadržavati samo cifre, razmake i crtice.');
+            validno = false;
+        }
+
+        if (tema === '') {
+            prikaziGresku('pitanje', 'Molimo odaberite temu upita.');
+            validno = false;
+        }
+
+        if (poruka === '') {
+            prikaziGresku('poruka', 'Poruka je obavezna i ne smije biti prazna.');
+            validno = false;
+        }
+
+        if (validno) {
+            uspjesnaPoruka.style.display = 'block';
+            uspjesnaPoruka.textContent = `Hvala Vam na upitu, ${ime}! Poruka je uspješno poslana.`;
+            forma.reset();
+        }
     });
-  };
-document.addEventListener("DOMContentLoaded", () => {
 
-    const checkbox = document.getElementById("tema");
+    resetDugme.addEventListener('click', () => {
+        resetirajGreske();
+        uspjesnaPoruka.style.display = 'none';
+    });
 
-    console.log("checkbox:", checkbox);
-
-    if (!checkbox) return;
-
-
-    if (localStorage.getItem("tema") === "light") {
-        document.body.classList.add("light");
-        checkbox.checked = true;
+    function prikaziGresku(poljeId, tekstPoruke) {
+        const polje = document.getElementById(poljeId);
+        const greskaSpan = document.getElementById(`${poljeId}Greska`);
+        polje.classList.add('neispravno');
+        greskaSpan.textContent = tekstPoruke;
     }
 
-    checkbox.addEventListener("change", () => {
-        console.log("klik:", checkbox.checked);
-
-        document.body.classList.toggle("light", checkbox.checked);
-
-        localStorage.setItem("tema", checkbox.checked ? "light" : "dark");
-
-        console.log("light mode:", document.body.classList.contains("light"));
-    });
-
+    function resetirajGreske() {
+        document.querySelectorAll('input, select, textarea').forEach(polje => {
+            polje.classList.remove('neispravno');
+        });
+        document.querySelectorAll('.greska-poruka').forEach(span => {
+            span.textContent = '';
+        });
+        uspjesnaPoruka.style.display = 'none';
+    }
 });
