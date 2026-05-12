@@ -206,3 +206,28 @@ document.querySelectorAll("#filteri button").forEach(filterBtn => {
       behavior: "smooth"
     });
   };
+document.addEventListener("DOMContentLoaded", () => {
+
+    const checkbox = document.getElementById("tema");
+
+    console.log("checkbox:", checkbox);
+
+    if (!checkbox) return;
+
+
+    if (localStorage.getItem("tema") === "light") {
+        document.body.classList.add("light");
+        checkbox.checked = true;
+    }
+
+    checkbox.addEventListener("change", () => {
+        console.log("klik:", checkbox.checked);
+
+        document.body.classList.toggle("light", checkbox.checked);
+
+        localStorage.setItem("tema", checkbox.checked ? "light" : "dark");
+
+        console.log("light mode:", document.body.classList.contains("light"));
+    });
+
+});
