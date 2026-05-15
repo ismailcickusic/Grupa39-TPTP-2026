@@ -338,3 +338,25 @@ document.addEventListener('DOMContentLoaded', () => {
         uspjesnaPoruka.style.display = 'none';
     }
 });
+
+
+
+
+
+const menu_tipka = document.querySelector('.menu-tipka');
+const sideMenu = document.querySelector('.side-menu');
+const closeBtn = document.querySelector('.close-btn');
+
+menu_tipka.addEventListener('click', () => {
+    if (sideMenu.style.right === "0px") {
+        sideMenu.style.right = "-250px";
+    } else {
+        sideMenu.style.right = "0px";
+    }
+});
+
+closeBtn.addEventListener('click', () => {
+    sideMenu.style.right = "-250px";
+});
+
+
