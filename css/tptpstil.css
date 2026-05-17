@@ -476,7 +476,8 @@ border-collapse: collapse;
 
 
 
-
+/* KONTAKT SEKCIJA - glavni kontejner forme  */
+/* Centrira sadržaj, postavlja maksimalnu širinu, pozadinu i sjenu */
 .kontakt-sekcija {
     max-width: 550px;
     margin: 3rem auto;
@@ -485,7 +486,7 @@ border-collapse: collapse;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
 }
-
+/* Naslov i podnaslov kontakt sekcije */
 .kontakt-sekcija h1 {
     color: var(--primary-color, #d4af37);
     margin-bottom: 0.5rem;
@@ -495,7 +496,8 @@ border-collapse: collapse;
     color: var(--text-color);
     margin-bottom: 2rem;
 }
-
+/*FORMA GRUPA - wrapper za svako polje forme */
+/* Slaže label i input vertikalno jedan ispod drugog */
 .forma-grupa {
     display: flex;
     flex-direction: column; 
@@ -503,7 +505,7 @@ border-collapse: collapse;
     margin-bottom: 15px; 
     width: 100%; 
 }
-
+/* Stilizovanje labela unutar forme */
 .forma-grupa label {
     display: block; 
     margin-bottom: 5px; 
@@ -512,7 +514,8 @@ border-collapse: collapse;
     left: auto;
     white-space: nowrap;
 }
-
+/* INPUT POLJA - zajednički stilovi za input, select i textarea*/
+/* Sva polja dobijaju istu širinu, padding, pozadinu i border */
 .forma-grupa input,
 .forma-grupa select,
 .forma-grupa textarea {
@@ -525,12 +528,12 @@ border-collapse: collapse;
     font-size: 14px;
     box-sizing: border-box;
 }
-
+/* Stilizovanje opcija unutar padajućeg menija */
 .forma-grupa select option {
     background-color: var(--dark-bg);
     color: var(--tekst-boja);
 }
-
+/* Zlatni border kada je polje aktivno (fokusirano) */
 .forma-grupa input:focus, 
 .forma-grupa select:focus, 
 .forma-grupa textarea:focus {
@@ -538,18 +541,20 @@ border-collapse: collapse;
     outline: none;
 }
 
-
+/*VALIDACIJA - poruke o greškama i neispravnim poljima  */
+/* Crvena poruka o grešci ispod polja */
 .greska-poruka {
     color: var(--error-color, #e74c3c);
     font-size: 0.8rem;
     margin-top: 0.3rem;
     display: block;
 }
-
+/* Crveni border na polju koje nije ispravno popunjeno */
 .neispravno {
     border-color: var(--error-color, #e74c3c) !important;
 }
-
+/* USPJEŠNA PORUKA - prikazuje se nakon slanja forme  */
+/* Zeleni kontejner koji se pojavljuje kada je forma uspješno poslana */o */
 .uspjeh-kontejner {
     background-color: rgba(46, 204, 113, 0.15);
     border: 1px solid var(--success-color, #2ecc71);
@@ -560,14 +565,15 @@ border-collapse: collapse;
     text-align: center;
     font-weight: bold;
 }
-
+/*DUGMAD FORME*/
+/* Wrapper koji slaže dugmad horizontalno uz razmak između njih */
 /* Dugmad forme */
 .forma-dugmad {
     display: flex;
     gap: 1rem;
     margin-top: 2rem;
 }
-
+/* Zajednički stilovi za oba dugmeta - jednaka širina i hover animacija */
 .forma-dugmad button {
     flex: 1;
     padding: 0.9rem;
@@ -577,7 +583,7 @@ border-collapse: collapse;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
+/* Dugme za slanje - zlatna pozadina, tamniji hover efekat */
 .forma-dugmad button[type="submit"] {
     background-color: var(--primary-color, #d4af37);
     color: #1a1a1a;
@@ -586,7 +592,7 @@ border-collapse: collapse;
 .forma-dugmad button[type="submit"]:hover {
     background-color: #e5be3c;
 }
-
+/* Dugme za resetovanje - siva pozadina, svjetliji hover efekat */
 .forma-dugmad button[type="reset"] {
     background-color: #555555;
     color: var(--white, #ffffff);
@@ -595,6 +601,8 @@ border-collapse: collapse;
 .forma-dugmad button[type="reset"]:hover {
     background-color: #777777;
 }
+
+/* Forsira ispravno prikazivanje input polja unutar main taga (sprječava nasljeđivanje neželjenih stilova) */
 main input,
 main select,
 main textarea {
@@ -602,10 +610,12 @@ main textarea {
     height: auto !important;
     visibility: visible !important;
 }
+/* Razmak na vrhu kako sadržaj ne bi bio prekriven navigacijom */
 main {
     padding-top: 80px;
 }
-
+/*  CONTACT FIELD - labele sa posebnim ponašanjem*/
+/* Resetuje naslijeđene stilove labela i uklanja pseudo-element ::after */
 .contact-field {
     margin: 0;
     background: none;
@@ -619,7 +629,8 @@ main {
 .contact-field::after {
     display: none;
 } 
-
+/*FOOTER */
+/* Tamna pozadina sa zlatnom gornjom linijom kao dekorativnim akcentom */
 .kontakti-footer {
     background-color: var(--footer);
     border-top: 2px solid #d4af37;
@@ -627,7 +638,7 @@ main {
     text-align: center;
     margin-top: 3rem;
 }
-
+/* Stilizovanje teksta u footeru */
 .kontakti-footer p {
     color: var(--text-color);
     font-size: 14px;
@@ -904,7 +915,9 @@ main {
 .about-right h3+p {
     margin-bottom: 15px;
 }
-    
+
+}
+
 .linija{
     width: 100%;
 }
@@ -918,10 +931,5 @@ main {
     font-size: 20px;
     white-space: normal;
 }
-
-}
-
-
-
 
 
