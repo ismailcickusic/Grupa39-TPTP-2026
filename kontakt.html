@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontakt - Fade Zone</title>
+    <title>Kontakt - Fade Zone</title> 
+    <!-- Učitavanje eksternog CSS fajla za stilizovanje stranice -->
     <link rel="stylesheet" href="css/tptpstil.css">
+    <!-- Učitavanje eksternog JS fajla; defer znači da se skripta izvršava tek nakon što se HTML u potpunosti učita -->
     <script src="js/tptpskripte.js" defer></script>
 </head>
 <body>
@@ -19,7 +21,7 @@
                 <li><a href="https://github.com/ismailcickusic/Grupa39-TPTP-2026">GitHub</a></li>
                 <li><a href="index.html">Početna</a></li>
                 <li><a href="sadrzaj.html">Usluge</a></li>
-                <li><a href="kontakt.html class="aktivna">Kontakt</a></li>
+                <li><a href="kontakt.html" class="aktivna">Kontakt</a></li>
             </ul>
             <div class="menu-tipka">
                 <img src="images/menu.png" alt="menu">
@@ -39,11 +41,14 @@
     </div>
 
     <main>
+        <!-- Glavna sekcija stranice koja sadrži kontakt formu -->
         <section class="kontakt-sekcija">
             <h1>Kontaktirajte nas</h1>
             <p>Imate pitanja ili želite zakazati termin? Rado ćemo vam pomoći.</p>
-
+ <!-- Kontakt forma; novalidate onemogućava preglednikovu automatsku validaciju, jer se validacija radi kroz JS -->
             <form id="kontaktForma" novalidate>
+                <!-- Polja za unos ličnih podataka: ime, prezime, email i telefon -->
+                <!-- Svako polje ima label, input i span za prikaz greške u slučaju neispravnog unosa -->
                 <div class="forma-grupa">
                     <label  class="contact-field" for="ime">Ime:</label>
                     <input type="text" id="ime" name="ime">
@@ -67,7 +72,8 @@
                     <input type="text" id="telefon" name="telefon">
                     <span class="greska-poruka" id="telefonGreska"></span>
                 </div>
-
+                
+                 <!-- Padajući meni za odabir teme upita -->
                 <div class="forma-grupa">
                     <label class="contact-field" for="pitanje">Tema upita:</label>
                     <select id="pitanje" name="pitanje">
@@ -79,22 +85,26 @@
                     <span class="greska-poruka" id="pitanjeGreska"></span>
                 </div>
 
+                 <!-- Textarea za unos slobodnog teksta poruke -->
                 <div class="forma-grupa">
                     <label class="contact-field" for="poruka">Poruka:</label>
                     <textarea id="poruka" name="poruka" rows="5"></textarea>
                     <span class="greska-poruka" id="porukaGreska"></span>
                 </div>
 
+                 <!-- Dugmad za slanje i resetovanje forme -->
                 <div class="forma-dugmad">
                     <button type="submit">Pošalji</button>
                     <button type="reset" id="resetDugme">Resetuj</button>
                 </div>
             </form>
 
+             <!-- Kontejner koji je inicijalno skriven; prikazuje se kroz JS nakon uspješnog slanja forme -->
             <div id="uspjesnaPoruka" class="uspjeh-kontejner" style="display: none;"></div>
         </section>
     </main>
 
+    <!-- Footer sa imenima autora i godinom -->
     <footer class="kontakti-footer">
         <p>Autori: Kovačević Jasmina, Muratović Irhad, Čičkušić Ismail | &copy; 2026</p>
     </footer>
