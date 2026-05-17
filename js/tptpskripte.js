@@ -358,5 +358,16 @@ menu_tipka.addEventListener('click', () => {
 closeBtn.addEventListener('click', () => {
     sideMenu.style.right = "-250px";
 });
+let brojac = localStorage.getItem("brojPosjeta");
 
+
+                  if (!brojac) {
+                    brojac = 0;
+                    }
+
+                  brojac++;
+
+                   localStorage.setItem("brojPosjeta", brojac);
+
+               document.getElementById("brojac").textContent = brojac;
 
