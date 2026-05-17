@@ -249,21 +249,27 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
+// Čeka da se cijela stranica učita prije nego što se počne izvršavati kod
 document.addEventListener('DOMContentLoaded', () => {
+   // Dohvatanje elemenata iz HTML-a sa kojima skripta radi
     const forma = document.getElementById('kontaktForma');
     const resetDugme = document.getElementById('resetDugme');
     const uspjesnaPoruka = document.getElementById('uspjesnaPoruka');
-
+ // Ako forma ne postoji na stranici, skripta se prekida kako bi se izbjegla greška
+    if (!forma) return; 
     if (!forma) return; 
 
+     // Regex uzorci za validaciju email adrese i broja telefona
     const emailRegex = /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const telefonRegex = /^[0-9 -]+$/;
 
+    // Slušač događaja koji se aktivira kada korisnik pokuša poslati formu
     forma.addEventListener('submit', function(event) {
+      // Sprječava automatsko slanje i osvježavanje stranice
         event.preventDefault();
         let validno = true;
 
+        // Čitanje i trimovanje vrijednosti iz svih polja forme
         const ime = document.getElementById('ime').value.trim();
         const prezime = document.getElementById('prezime').value.trim();
         const email = document.getElementById('email').value.trim();
@@ -271,8 +277,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const tema = document.getElementById('pitanje').value;
         const poruka = document.getElementById('poruka').value.trim();
 
+         // Brisanje prethodnih grešaka prije nove validacije
         resetirajGreske();
 
+        // Validacija svakog polja - ako je polje prazno ili neispravno, prikazuje se greška i forma se označava kao nevalidna
         if (ime === '') {
             prikaziGresku('ime', 'Ime je obavezno polje.');
             validno = false;
@@ -283,6 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
             validno = false;
         }
 
+        // Email se provjerava dvostruko - da nije prazan i da odgovara ispravnom formatu
         if (email === '') {
             prikaziGresku('email', 'Email je obavezno polje.');
             validno = false;
@@ -291,6 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
             validno = false;
         }
 
+        // Telefon se provjerava dvostruko - da nije prazan i da sadrži samo cifre, razmake i crtice
         if (telefon === '') {
             prikaziGresku('telefon', 'Telefon je obavezno polje.');
             validno = false;
@@ -309,6 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
             validno = false;
         }
 
+        // Ako su sva polja ispravno popunjena, prikazuje se poruka uspjeha i forma se resetuje
         if (validno) {
             uspjesnaPoruka.style.display = 'block';
             uspjesnaPoruka.textContent = `Hvala Vam na upitu, ${ime}! Poruka je uspješno poslana.`;
@@ -316,11 +327,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Ako su sva polja ispravno popunjena, prikazuje se poruka uspjeha i forma se resetuje
     resetDugme.addEventListener('click', () => {
         resetirajGreske();
         uspjesnaPoruka.style.display = 'none';
     });
 
+    // Funkcija koja označava polje kao neispravno i prikazuje odgovarajuću poruku greške ispod njega
     function prikaziGresku(poljeId, tekstPoruke) {
         const polje = document.getElementById(poljeId);
         const greskaSpan = document.getElementById(`${poljeId}Greska`);
@@ -328,6 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
         greskaSpan.textContent = tekstPoruke;
     }
 
+    // Funkcija koja uklanja sve greške sa polja i skriva poruku uspjeha
     function resetirajGreske() {
         document.querySelectorAll('input, select, textarea').forEach(polje => {
             polje.classList.remove('neispravno');
@@ -370,4 +384,3 @@ let brojac = localStorage.getItem("brojPosjeta");
                    localStorage.setItem("brojPosjeta", brojac);
 
                document.getElementById("brojac").textContent = brojac;
-
