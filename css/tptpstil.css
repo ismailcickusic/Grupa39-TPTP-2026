@@ -874,7 +874,7 @@ main {
     line-height: 1.6;
     max-width: 400px;
     font-weight: 1000;
-    white-space: nowrap;
+    white-space: normal;
 
 }
 
@@ -885,7 +885,7 @@ main {
     letter-spacing: 2px;
     font-weight: 1000;
     font-size: 24px;
-    white-space: nowrap;
+    white-space: normal;
 
 }
 
@@ -903,6 +903,20 @@ main {
 
 .about-right h3+p {
     margin-bottom: 15px;
+}
+    
+.linija{
+    width: 100%;
+}
+
+.hero-text h1 {
+    font-size: 35px;
+    white-space: normal;
+}
+
+.hero-text p {
+    font-size: 20px;
+    white-space: normal;
 }
 
 }
