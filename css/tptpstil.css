@@ -689,6 +689,42 @@ main {
     .lista {
         display: none;  
     }
+    .hero-text h1 {
+        font-size: 50px;
+        text-align: center;
+    }
+
+    .hero-text p {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .about-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+        padding: 40px 20px;
+    }
+
+    .about-left,
+    .about-right {
+        width: 100%;
+    }
+
+    .about-image img {
+        width: 100%;
+        max-width: 280px;
+        height: 350px;
+    }
+
+    .about-right h4 {
+        font-size: 28px;
+    }
+
+    .about-right p {
+        font-size: 18px;
+    }
+}
 
     .menu-tipka {
         display: block; 
