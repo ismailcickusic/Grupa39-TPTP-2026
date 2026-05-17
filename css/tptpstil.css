@@ -724,7 +724,7 @@ main {
     .about-right p {
         font-size: 18px;
     }
-}
+
 
     .menu-tipka {
         display: block; 
@@ -833,7 +833,7 @@ main {
     transition: 0.3s;
 }
 
-}
+
 
 .about-right {
     flex: 1;
@@ -841,7 +841,7 @@ main {
 }
 
 .about-left h2 {
-    color: rgb(255, 255, 255);
+    color: var(--tekst-boja);
     letter-spacing: 2px;
 
 }
@@ -870,7 +870,7 @@ main {
 
 .about-left p {
     font-size: 20px;
-    color: #ccc;
+    color: var(--text-color);
     line-height: 1.6;
     max-width: 400px;
     font-weight: 1000;
@@ -896,7 +896,7 @@ main {
 
 .about-right p {
     font-size: 20px;
-    color: #ccc;
+    color: var(--text-color);
     line-height: 1.5;
     max-width: 300px;
 }
@@ -904,4 +904,10 @@ main {
 .about-right h3+p {
     margin-bottom: 15px;
 }
+
+}
+
+
+
+
 
